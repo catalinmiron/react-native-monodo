@@ -10,6 +10,7 @@ module.exports = {
         "barlow-400": "Barlow_400Regular",
         "barlow-500": "Barlow_500Medium",
         "barlow-700": "Barlow_700Bold",
+        "barlow-900": "Barlow_900Black",
       },
       colors: {
         selected: "#F25606",

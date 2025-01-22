@@ -1,8 +1,10 @@
+import "@/utils/cssInterop";
 import {
   Barlow_300Light,
   Barlow_400Regular,
   Barlow_500Medium,
   Barlow_700Bold,
+  Barlow_900Black,
   useFonts,
 } from "@expo-google-fonts/barlow";
 import {
@@ -29,6 +31,7 @@ export default function RootLayout() {
     Barlow_400Regular: Barlow_400Regular,
     Barlow_500Medium: Barlow_500Medium,
     Barlow_700Bold: Barlow_700Bold,
+    Barlow_900Black: Barlow_900Black,
   });
 
   useEffect(() => {
