@@ -20,6 +20,7 @@ import "react-native-reanimated";
 import "../global.css";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { useLocalMigrations } from "@/hooks/useLocalMigrations";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -33,6 +34,8 @@ export default function RootLayout() {
     Barlow_700Bold: Barlow_700Bold,
     Barlow_900Black: Barlow_900Black,
   });
+
+  useLocalMigrations();
 
   useEffect(() => {
     if (loaded) {
