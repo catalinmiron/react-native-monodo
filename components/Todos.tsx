@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { between } from "drizzle-orm";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import { Button, TextInput } from "react-native";
 import Animated, {
   FadeInDown,
   FadeOutDown,
@@ -36,7 +36,7 @@ export function Todos({ day }: { day: string }) {
   );
 
   return (
-    <View>
+    <Animated.View>
       <Stagger
         className='gap-2 mb-4 mt-2'
         exitDirection={1}
@@ -47,9 +47,9 @@ export function Todos({ day }: { day: string }) {
         ))}
       </Stagger>
       <Animated.View
-        entering={FadeInDown.duration(400)}
-        exiting={FadeOutDown.duration(400)}
-        layout={LinearTransition.springify().damping(80).stiffness(200)}>
+        entering={FadeInDown.duration(400).delay(150)}
+        exiting={FadeOutDown.duration(400).delay(150)}
+        layout={LinearTransition.duration(400)}>
         <TextInput
           className='border border-black/30 rounded-md p-2'
           placeholder='Add todo'
@@ -66,6 +66,6 @@ export function Todos({ day }: { day: string }) {
           }}
         />
       </Animated.View>
-    </View>
+    </Animated.View>
   );
 }
