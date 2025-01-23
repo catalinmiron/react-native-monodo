@@ -5,7 +5,7 @@ import { Stagger } from "@animatereactnative/stagger";
 import dayjs from "dayjs";
 import { between } from "drizzle-orm";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button, TextInput } from "react-native";
 import Animated, {
   FadeInDown,
@@ -35,6 +35,22 @@ export function Todos({ day }: { day: string }) {
     [day]
   );
 
+  const [content, setContent] = useState("");
+  const inputRef = useRef<TextInput>(null);
+
+  const addTodo = () => {
+    inputRef.current?.clear();
+    inputRef.current?.blur();
+    db.insert(todos)
+      .values({
+        date: dayjs(day).toDate(),
+        content: content,
+      })
+      .run();
+    setContent("");
+  };
+  const isDisabled = !content || content === "";
+
   return (
     <Animated.View>
       <Stagger
@@ -51,20 +67,24 @@ export function Todos({ day }: { day: string }) {
         exiting={FadeOutDown.duration(400).delay(150)}
         layout={LinearTransition.duration(400)}>
         <TextInput
+          ref={inputRef}
+          defaultValue={content}
+          submitBehavior='blurAndSubmit'
+          onSubmitEditing={(e) => {
+            console.log(e.nativeEvent.text);
+            console.log(content);
+            console.log(isDisabled);
+            if (!isDisabled) {
+              addTodo();
+            }
+          }}
+          onChangeText={(text) => {
+            setContent(text.trim());
+          }}
           className='border-b border-black/30 rounded-md p-2'
           placeholder='Add todo'
         />
-        <Button
-          title='Add todo'
-          onPress={() => {
-            db.insert(todos)
-              .values({
-                date: dayjs(day).toDate(),
-                content: `Todo ${data.length + 1}`,
-              })
-              .run();
-          }}
-        />
+        <Button disabled={isDisabled} title='Add todo' onPress={addTodo} />
       </Animated.View>
     </Animated.View>
   );

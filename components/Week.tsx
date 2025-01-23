@@ -9,7 +9,8 @@ export function Week() {
   return (
     <KeyboardAwareScrollView
       bottomOffset={62}
-      keyboardShouldPersistTaps='handled'>
+      keyboardShouldPersistTaps='handled'
+      disableScrollOnKeyboardHide>
       <View>
         {weekDays.map((day) => (
           <Day day={day} key={`day-${day}`} />
