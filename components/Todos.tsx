@@ -51,7 +51,7 @@ export function Todos({ day }: { day: string }) {
         exiting={FadeOutDown.duration(400).delay(150)}
         layout={LinearTransition.duration(400)}>
         <TextInput
-          className='border border-black/30 rounded-md p-2'
+          className='border-b border-black/30 rounded-md p-2'
           placeholder='Add todo'
         />
         <Button
