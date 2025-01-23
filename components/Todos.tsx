@@ -6,7 +6,8 @@ import dayjs from "dayjs";
 import { between } from "drizzle-orm";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { useState } from "react";
-import { Button, View } from "react-native";
+import { Button, TextInput, View } from "react-native";
+import Animated, { FadeInDown, FadeOutDown } from "react-native-reanimated";
 import { Todo } from "./Todo";
 
 export function Todos({ day }: { day: string }) {
@@ -26,7 +27,8 @@ export function Todos({ day }: { day: string }) {
           dayjs(day).endOf("day").toDate()
         )
       )
-      .orderBy(todos.created_at)
+      .orderBy(todos.created_at),
+    [day]
   );
 
   return (
@@ -34,30 +36,31 @@ export function Todos({ day }: { day: string }) {
       <Stagger
         className='gap-2 mb-4 mt-2'
         exitDirection={1}
-        enterDirection={-1}>
+        // enterDirection={-1}
+      >
         {data?.map((todo, index) => (
           <Todo key={todo.id} todo={todo} />
         ))}
       </Stagger>
-      <Button
-        title='Add todo'
-        onPress={() => {
-          db.insert(todos)
-            .values({
-              date: dayjs(day).toDate(),
-              content: `Todo ${todosLocal.length + 1}`,
-            })
-            .run();
-          // setTodos([
-          //   ...todosLocal,
-          //   {
-          //     id: todosLocal.length + 1,
-          //     content: `Todo ${todosLocal.length + 1}`,
-          //     done: false,
-          //   },
-          // ]);
-        }}
-      />
+      <Animated.View
+        entering={FadeInDown.duration(400)}
+        exiting={FadeOutDown.duration(400)}>
+        <TextInput
+          className='border border-black/30 rounded-md p-2'
+          placeholder='Add todo'
+        />
+        <Button
+          title='Add todo'
+          onPress={() => {
+            db.insert(todos)
+              .values({
+                date: dayjs(day).toDate(),
+                content: `Todo ${todosLocal.length + 1}`,
+              })
+              .run();
+          }}
+        />
+      </Animated.View>
     </View>
   );
 }
