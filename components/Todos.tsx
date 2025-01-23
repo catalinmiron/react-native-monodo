@@ -7,7 +7,11 @@ import { between } from "drizzle-orm";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { useState } from "react";
 import { Button, TextInput, View } from "react-native";
-import Animated, { FadeInDown, FadeOutDown } from "react-native-reanimated";
+import Animated, {
+  FadeInDown,
+  FadeOutDown,
+  LinearTransition,
+} from "react-native-reanimated";
 import { Todo } from "./Todo";
 
 export function Todos({ day }: { day: string }) {
@@ -44,7 +48,8 @@ export function Todos({ day }: { day: string }) {
       </Stagger>
       <Animated.View
         entering={FadeInDown.duration(400)}
-        exiting={FadeOutDown.duration(400)}>
+        exiting={FadeOutDown.duration(400)}
+        layout={LinearTransition.springify().damping(80).stiffness(200)}>
         <TextInput
           className='border border-black/30 rounded-md p-2'
           placeholder='Add todo'
@@ -55,7 +60,7 @@ export function Todos({ day }: { day: string }) {
             db.insert(todos)
               .values({
                 date: dayjs(day).toDate(),
-                content: `Todo ${todosLocal.length + 1}`,
+                content: `Todo ${data.length + 1}`,
               })
               .run();
           }}
