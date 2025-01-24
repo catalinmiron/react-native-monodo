@@ -22,7 +22,7 @@ export const weekDays = [...Array(5).keys()].map((key) => {
   return dayjs().startOf("isoWeek").add(key, "day").format(globalFormatter);
 });
 
-const _opacity = 0.1;
+const _opacity = 0.4;
 export const weekDayColors = {
   1: `rgba(215, 215, 215, ${_opacity})`,
   2: `rgba(206, 206, 206, ${_opacity})`,

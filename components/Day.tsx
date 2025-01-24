@@ -1,4 +1,9 @@
-import { localFormatter, weekDayFormatter, weekDays } from "@/utils/constants";
+import {
+  localFormatter,
+  weekDayColors,
+  weekDayFormatter,
+  weekDays,
+} from "@/utils/constants";
 import { Accordion } from "@animatereactnative/accordion";
 import dayjs from "dayjs";
 import React from "react";
@@ -16,6 +21,7 @@ export function Day({ day }: { day: string }) {
       className='gap-2 pt-4 pr-4 pl-12 bg-transparent border-t-2 border-black/10'
       style={{
         minHeight: (height - top - bottom) / weekDays.length,
+        backgroundColor: weekDayColors[dayjs(day).weekday()],
         // experimental_backgroundImage: `linear-gradient(to bottom, ${
         //   weekDayColors[dayjs(day).weekday()]
         // }, rgba(0,0,0,0.1))`,
