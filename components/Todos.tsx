@@ -5,14 +5,16 @@ import { Stagger } from "@animatereactnative/stagger";
 import dayjs from "dayjs";
 import { between } from "drizzle-orm";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
-import { useRef, useState } from "react";
-import { Button, TextInput } from "react-native";
+import { Plus } from "lucide-react-native";
+import React, { useRef, useState } from "react";
+import { Pressable, Text, TextInput, View } from "react-native";
 import Animated, {
   FadeInDown,
   FadeOutDown,
   LinearTransition,
 } from "react-native-reanimated";
 import { Todo } from "./Todo";
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export function Todos({ day }: { day: string }) {
   const [todosLocal, setTodos] = useState(_todos);
@@ -52,7 +54,7 @@ export function Todos({ day }: { day: string }) {
   const isDisabled = !content || content === "";
 
   return (
-    <Animated.View>
+    <Animated.View className='gap-2'>
       <Stagger
         className='gap-2 mb-4 mt-2'
         exitDirection={1}
@@ -65,26 +67,34 @@ export function Todos({ day }: { day: string }) {
       <Animated.View
         entering={FadeInDown.duration(400).delay(150)}
         exiting={FadeOutDown.duration(400).delay(150)}
-        layout={LinearTransition.duration(400)}>
+        layout={LinearTransition.duration(400)}
+        className='gap-2 flex-row mb-4 items-end'>
         <TextInput
           ref={inputRef}
           defaultValue={content}
-          submitBehavior='blurAndSubmit'
-          onSubmitEditing={(e) => {
-            console.log(e.nativeEvent.text);
-            console.log(content);
-            console.log(isDisabled);
-            if (!isDisabled) {
-              addTodo();
-            }
-          }}
+          multiline
+          // submitBehavior='blurAndSubmit'
+          // onSubmitEditing={(e) => {
+          //   if (!isDisabled) {
+          //     addTodo();
+          //   }
+          // }}
           onChangeText={(text) => {
             setContent(text.trim());
           }}
-          className='border-b border-black/30 rounded-md p-2'
-          placeholder='Add todo'
+          className='flex-1 border-b border-black/50 rounded-md p-2 font-barlow-400'
+          placeholder='What needs to be done?'
         />
-        <Button disabled={isDisabled} title='Add todo' onPress={addTodo} />
+        <AnimatedPressable
+          disabled={isDisabled}
+          onPress={addTodo}
+          layout={LinearTransition}
+          style={{ opacity: isDisabled ? 0.5 : 1 }}>
+          <View className='bg-black/50 px-2 py-1 rounded-lg flex-row gap-1 items-center'>
+            <Plus size={14} className='stroke-white' />
+            <Text className='font-barlow-500 uppercase color-white'>Add</Text>
+          </View>
+        </AnimatedPressable>
       </Animated.View>
     </Animated.View>
   );
