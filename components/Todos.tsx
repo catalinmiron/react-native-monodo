@@ -1,6 +1,5 @@
 import { db } from "@/db/init";
 import { todos } from "@/db/schema";
-import { _todos } from "@/utils/mock";
 import { Stagger } from "@animatereactnative/stagger";
 import dayjs from "dayjs";
 import { between } from "drizzle-orm";
@@ -17,11 +16,6 @@ import { Todo } from "./Todo";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export function Todos({ day }: { day: string }) {
-  const [todosLocal, setTodos] = useState(_todos);
-  // if (day !== dayjs().format("YYYY-MM-DD")) {
-  //   return null;
-  // }
-
   const { data } = useLiveQuery(
     db
       .select()
