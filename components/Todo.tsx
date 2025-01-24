@@ -9,7 +9,6 @@ export function Todo({ todo }: { todo: typeof todos.$inferSelect }) {
     <View
       className='flex-row gap-2 items-center'
       onTouchStart={() => {
-        console.log({ todo });
         db.update(todos)
           .set({
             done: Boolean(todo.done) ? 0 : 1,
