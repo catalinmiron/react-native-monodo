@@ -1,9 +1,4 @@
-import {
-  localFormatter,
-  weekDayColors,
-  weekDayFormatter,
-  weekDays,
-} from "@/utils/constants";
+import { localFormatter, weekDayFormatter, weekDays } from "@/utils/constants";
 import { Accordion } from "@animatereactnative/accordion";
 import dayjs from "dayjs";
 import React from "react";
@@ -18,12 +13,12 @@ export function Day({ day }: { day: string }) {
   return (
     <Accordion.Accordion
       isOpen={dayjs(day).isSame(dayjs(), "day")}
-      className='gap-2 pt-4 pr-4 pl-12 bg-transparent'
+      className='gap-2 pt-4 pr-4 pl-12 bg-transparent border-t-2 border-black/10'
       style={{
         minHeight: (height - top - bottom) / weekDays.length,
-        experimental_backgroundImage: `linear-gradient(to bottom, ${
-          weekDayColors[dayjs(day).weekday()]
-        }, rgba(0,0,0,0.1))`,
+        // experimental_backgroundImage: `linear-gradient(to bottom, ${
+        //   weekDayColors[dayjs(day).weekday()]
+        // }, rgba(0,0,0,0.1))`,
       }}>
       <Accordion.Header>
         <Text className='text-4xl uppercase font-barlow-900'>
