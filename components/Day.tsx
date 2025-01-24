@@ -20,7 +20,7 @@ export function Day({ day }: { day: string }) {
       isOpen={dayjs(day).isSame(dayjs(), "day")}
       className='gap-2 pt-4 pr-4 pl-12 bg-transparent'
       style={{
-        minHeight: (height - top) / weekDays.length,
+        minHeight: (height - top - bottom) / weekDays.length,
         experimental_backgroundImage: `linear-gradient(to bottom, ${
           weekDayColors[dayjs(day).weekday()]
         }, rgba(0,0,0,0.1))`,
