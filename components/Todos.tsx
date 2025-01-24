@@ -50,7 +50,7 @@ export function Todos({ day }: { day: string }) {
   return (
     <Animated.View className='gap-2'>
       <Stagger
-        className='gap-2 mb-4 mt-2'
+        className='gap-2 mb-4 mt-2 '
         exitDirection={1}
         // enterDirection={-1}
       >

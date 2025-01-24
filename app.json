@@ -10,13 +10,14 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.catalinmiron.monodo"
+      "bundleIdentifier": "com.animatereactnative.monodo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.animatereactnative.monodo"
     },
     "web": {
       "bundler": "metro",
