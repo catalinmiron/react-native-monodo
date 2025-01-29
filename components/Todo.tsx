@@ -23,8 +23,8 @@ export function Todo({ todo }: { todo: typeof todos.$inferSelect }) {
             {
               text: "Delete",
               style: "destructive",
-              onPress: () => {
-                db.delete(todos).where(eq(todos.id, todo.id)).execute();
+              onPress: async () => {
+                await db.delete(todos).where(eq(todos.id, todo.id)).execute();
               },
             },
           ]

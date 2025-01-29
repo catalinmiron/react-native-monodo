@@ -11,6 +11,7 @@ import { Pressable, Text, TextInput, View } from "react-native";
 import Animated, {
   FadeInDown,
   FadeOutDown,
+  FadeOutLeft,
   LinearTransition,
 } from "react-native-reanimated";
 import { Todo } from "./Todo";
@@ -51,8 +52,10 @@ export function Todos({ day }: { day: string }) {
   return (
     <Animated.View className='gap-4'>
       <Stagger
-        className='gap-4 mb-4 mt-2 '
+        className='gap-4 mb-4 mt-2'
         exitDirection={1}
+        duration={200}
+        exiting={() => FadeOutLeft}
         // enterDirection={-1}
       >
         {data?.map((todo, index) => (
