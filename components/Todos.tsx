@@ -1,5 +1,6 @@
 import { db } from "@/db/init";
 import { todos } from "@/db/schema";
+import { hitSlop } from "@/utils/misc";
 import { Stagger } from "@animatereactnative/stagger";
 import dayjs from "dayjs";
 import { between } from "drizzle-orm";
@@ -67,12 +68,12 @@ export function Todos({ day }: { day: string }) {
           ref={inputRef}
           defaultValue={content}
           multiline
-          // submitBehavior='blurAndSubmit'
-          // onSubmitEditing={(e) => {
-          //   if (!isDisabled) {
-          //     addTodo();
-          //   }
-          // }}
+          submitBehavior='blurAndSubmit'
+          onSubmitEditing={(e) => {
+            if (!isDisabled) {
+              addTodo();
+            }
+          }}
           onChangeText={(text) => {
             setContent(text.trim());
           }}
@@ -83,10 +84,13 @@ export function Todos({ day }: { day: string }) {
           disabled={isDisabled}
           onPress={addTodo}
           layout={LinearTransition}
+          hitSlop={hitSlop}
           style={{ opacity: isDisabled ? 0.5 : 1 }}>
-          <View className='bg-black/50 px-2 py-1 rounded-lg flex-row gap-1 items-center'>
+          <View className='bg-black/50 px-1.5 py-0.5 rounded-lg flex-row gap-0.5 items-center'>
             <Plus size={14} className='stroke-white' />
-            <Text className='font-barlow-500 uppercase color-white'>Add</Text>
+            <Text className='font-barlow-500 uppercase color-white text-sm'>
+              Add
+            </Text>
           </View>
         </AnimatedPressable>
       </Animated.View>
