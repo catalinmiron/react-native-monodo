@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import { Stagger } from "@animatereactnative/stagger";
 import { LinearGradient } from "expo-linear-gradient";
 import { icons } from "lucide-react-native";
@@ -10,6 +11,9 @@ Object.keys(icons).forEach((key) => {
   });
 });
 
+cssInterop(Icon, {
+  className: "style",
+});
 cssInterop(LinearGradient, {
   className: "style",
 });
