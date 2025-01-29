@@ -1,10 +1,5 @@
 import { DayWeather, getIcon } from "@/constants/openweather";
-import {
-  localFormatter,
-  weekDayColors,
-  weekDayFormatter,
-  weekDays,
-} from "@/utils/constants";
+import { localFormatter, weekDayFormatter, weekDays } from "@/utils/constants";
 import { Accordion } from "@animatereactnative/accordion";
 import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
@@ -22,23 +17,34 @@ export const Day = observer(
     const { height } = useWindowDimensions();
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
+    const dayBg = {
+      1: `bg-gray-400/5 dark:bg-black/5`,
+      2: `bg-gray-400/10 dark:bg-black/10`,
+      3: `bg-gray-400/20 dark:bg-black/20`,
+      4: `bg-gray-400/30 dark:bg-black/30`,
+      5: `bg-gray-400/40 dark:bg-black/40`,
+      6: `bg-gray-400/50 dark:bg-black/50`,
+      0: `bg-gray-400/60 dark:bg-black/60`, // Sunday
+    };
     return (
       <Accordion.Accordion
         isOpen={isCurrentDay}
-        className='gap-2 pt-4 pr-4 pl-12 border-t-2 border-black/5'
+        className={`gap-2 pt-4 pr-4 pl-12 border-t-2 border-black/5 ${
+          dayBg[dayjs(day).weekday()]
+        }`}
         style={{
           minHeight: (height - top - bottom) / weekDays.length,
-          backgroundColor: weekDayColors[dayjs(day).weekday()],
+          // backgroundColor: weekDayColors[dayjs(day).weekday()],
           // experimental_backgroundImage: `linear-gradient(to bottom, ${
           //   weekDayColors[dayjs(day).weekday()]
           // }, rgba(0,0,0,0.1))`,
         }}>
         <Accordion.Header>
-          <Text className='text-4xl uppercase font-barlow-900'>
+          <Text className='text-4xl uppercase font-barlow-900 dark:text-white'>
             {dayjs(day).format(weekDayFormatter)}
           </Text>
           <Accordion.Expanded className='flex-row gap-4'>
-            <Text className='font-barlow-400 text-gray-600'>
+            <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
               {dayjs(day).format(localFormatter)}
             </Text>
             {weather && (
@@ -48,9 +54,9 @@ export const Day = observer(
                 <Icon
                   name={getIcon(weather.weather[0].id)}
                   size={14}
-                  className='stroke-gray-600'
+                  className='stroke-gray-600 dark:stroke-stone-300'
                 />
-                <Text className='font-barlow-400 text-gray-600'>
+                <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
                   {weather?.temp.day.toFixed(1)}°C
                 </Text>
               </Animated.View>

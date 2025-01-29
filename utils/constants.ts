@@ -16,7 +16,7 @@ export const weekDays = [...Array(7).keys()].map((key) => {
 const _opacity = 0.4;
 export const weekDayColors = {
   0: `rgba(132, 132, 132, ${_opacity})`,
-  1: `rgba(215, 215, 215, ${_opacity})`,
+  1: `rgba(215, 215, 215, ${_opacity})`, // Monday
   2: `rgba(206, 206, 206, ${_opacity})`,
   3: `rgba(201, 201, 201, ${_opacity})`,
   4: `rgba(192, 192, 192, ${_opacity})`,
