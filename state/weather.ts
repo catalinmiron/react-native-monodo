@@ -1,7 +1,7 @@
 import { API_URL, ForecastPayload } from "@/constants/openweather";
 import { queryClient } from "@/constants/queryClient";
 import { observable, observe } from "@legendapp/state";
-import { currentTime } from "@legendapp/state/helpers/time";
+import { currentDay } from "@legendapp/state/helpers/time";
 import { syncedQuery } from "@legendapp/state/sync-plugins/tanstack-query";
 import { location$ } from "./location";
 
@@ -11,7 +11,7 @@ export const weatherQuery$ = observable(
     query: {
       queryKey: [
         "weather",
-        currentTime.get().toDateString(),
+        currentDay.get().toDateString(),
         `latitude-${location$.latitude.get()}`,
         `longitude-${location$.longitude.get()}`,
       ],

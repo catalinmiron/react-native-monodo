@@ -16,17 +16,16 @@ async function getCurrentLocation() {
   let location = await Location.getCurrentPositionAsync({});
   const { latitude, longitude } = location.coords;
   console.log({ location });
-  location$.set({
+  location$.assign({
     latitude,
     longitude,
-    status: Location.PermissionStatus.GRANTED,
   });
-  await queryClient.invalidateQueries({
+  await queryClient.refetchQueries({
     queryKey: ["weather"],
   });
 
   weatherQuery$.delete();
-  // weatherQuery$.get();
+  weatherQuery$.get();
 }
 export function useStoreLocation() {
   useEffect(() => {

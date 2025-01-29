@@ -1,4 +1,5 @@
 import { DayWeather, getIcon } from "@/constants/openweather";
+import { location$ } from "@/state/location";
 import { localFormatter, weekDayFormatter, weekDays } from "@/utils/constants";
 import { Accordion } from "@animatereactnative/accordion";
 import { currentDay } from "@legendapp/state/helpers/time";
@@ -17,6 +18,7 @@ export const Day = observer(
     const { height } = useWindowDimensions();
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
+
     const dayBg = {
       1: `bg-stone-900/5 dark:bg-black/5`,
       2: `bg-stone-900/10 dark:bg-black/10`,
@@ -50,6 +52,9 @@ export const Day = observer(
               </Text>
               {weather && (
                 <Animated.View
+                  key={`day-${day}-latitude-${
+                    location$.get().latitude
+                  }-longitude-${location$.get().longitude}`}
                   className='flex-row gap-1 items-center'
                   entering={FadeInRight.springify().damping(14)}>
                   <Icon
