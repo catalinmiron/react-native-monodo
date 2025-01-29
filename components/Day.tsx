@@ -17,9 +17,10 @@ import { Todos } from "./Todos";
 export const Day = observer(({ day }: { day: string }) => {
   const { height } = useWindowDimensions();
   const { top, bottom } = useSafeAreaInsets();
+  const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
   return (
     <Accordion.Accordion
-      isOpen={dayjs(day).isSame(dayjs(currentDay.get()), "day")}
+      isOpen={isCurrentDay}
       className='gap-2 pt-4 pr-4 pl-12 border-t-2 border-black/5'
       style={{
         minHeight: (height - top - bottom) / weekDays.length,
