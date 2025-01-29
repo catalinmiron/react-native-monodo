@@ -86,9 +86,9 @@ export function Todos({ day }: { day: string }) {
           layout={LinearTransition}
           hitSlop={hitSlop}
           style={{ opacity: isDisabled ? 0.5 : 1 }}>
-          <View className='bg-black/50 px-1.5 py-0.5 rounded-lg flex-row gap-0.5 items-center'>
+          <View className='bg-black/50 px-2 py-1 rounded-lg flex-row gap-0.5 items-center'>
             <Plus size={14} className='stroke-white' />
-            <Text className='font-barlow-500 uppercase color-white text-sm'>
+            <Text className='font-barlow-500 uppercase color-white text-sm leading-none'>
               Add
             </Text>
           </View>
