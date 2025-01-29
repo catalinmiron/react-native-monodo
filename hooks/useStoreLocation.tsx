@@ -1,6 +1,5 @@
 import { queryClient } from "@/constants/queryClient";
 import { location$ } from "@/state/location";
-import { weatherQuery$ } from "@/state/weather";
 import * as Location from "expo-location";
 import { useEffect, useRef } from "react";
 import { AppState, NativeEventSubscription } from "react-native";
@@ -26,7 +25,7 @@ async function getCurrentLocation() {
   });
 
   // weatherQuery$.delete();
-  weatherQuery$.get();
+  // weatherQuery$.get();
 }
 export function useStoreLocation() {
   useEffect(() => {
