@@ -18,19 +18,19 @@ export const Day = observer(
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
     const dayBg = {
-      1: `bg-gray-300/5 dark:bg-black/5`,
-      2: `bg-gray-300/10 dark:bg-black/10`,
-      3: `bg-gray-300/20 dark:bg-black/20`,
-      4: `bg-gray-300/30 dark:bg-black/30`,
-      5: `bg-gray-300/40 dark:bg-black/40`,
-      6: `bg-gray-300/50 dark:bg-black/50`,
-      0: `bg-gray-300/60 dark:bg-black/60`, // Sunday
+      1: `bg-stone-900/5 dark:bg-black/5`,
+      2: `bg-stone-900/10 dark:bg-black/10`,
+      3: `bg-stone-900/15 dark:bg-black/15`,
+      4: `bg-stone-900/20 dark:bg-black/20`,
+      5: `bg-stone-900/25 dark:bg-black/25`,
+      6: `bg-stone-900/30 dark:bg-black/30`,
+      0: `bg-stone-900/35 dark:bg-black/45`, // Sunday
     };
     return (
       <Accordion.Accordion
         isOpen={isCurrentDay}
-        className={`gap-2 bg-gray-300/60 pt-4 pr-4 border-t-2 border-black/5 ${
-          dayBg[dayjs(day).weekday()]
+        className={`gap-2 pt-4 pr-4 border-t-2 border-black/5 ${
+          dayBg[dayjs(day).weekday() as 0 | 1 | 2 | 3 | 4 | 5 | 6] as string
         }`}
         style={{
           minHeight: (height - top - bottom) / weekDays.length,
