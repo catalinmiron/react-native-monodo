@@ -5,7 +5,7 @@ import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
 import React from "react";
-import { Text, useWindowDimensions } from "react-native";
+import { Text, useWindowDimensions, View } from "react-native";
 import Animated, { FadeInRight } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Icon } from "./Icon";
@@ -29,7 +29,7 @@ export const Day = observer(
     return (
       <Accordion.Accordion
         isOpen={isCurrentDay}
-        className={`gap-2 pt-4 pr-4 pl-12 border-t-2 border-black/5 ${
+        className={`gap-2 bg-gray-300/60 pt-4 pr-4 border-t-2 border-black/5 ${
           dayBg[dayjs(day).weekday()]
         }`}
         style={{
@@ -40,28 +40,30 @@ export const Day = observer(
           // }, rgba(0,0,0,0.1))`,
         }}>
         <Accordion.Header>
-          <Text className='text-4xl uppercase font-barlow-900 dark:text-white'>
-            {dayjs(day).format(weekDayFormatter)}
-          </Text>
-          <Accordion.Expanded className='flex-row gap-4'>
-            <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
-              {dayjs(day).format(localFormatter)}
+          <View className='pl-12'>
+            <Text className='text-4xl uppercase font-barlow-900 dark:text-white opacity-90'>
+              {dayjs(day).format(weekDayFormatter)}
             </Text>
-            {weather && (
-              <Animated.View
-                className='flex-row gap-1 items-center'
-                entering={FadeInRight.springify().damping(14)}>
-                <Icon
-                  name={getIcon(weather.weather[0].id)}
-                  size={14}
-                  className='stroke-gray-600 dark:stroke-stone-300'
-                />
-                <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
-                  {weather?.temp.day.toFixed(1)}°C
-                </Text>
-              </Animated.View>
-            )}
-          </Accordion.Expanded>
+            <Accordion.Expanded className='flex-row gap-4'>
+              <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
+                {dayjs(day).format(localFormatter)}
+              </Text>
+              {weather && (
+                <Animated.View
+                  className='flex-row gap-1 items-center'
+                  entering={FadeInRight.springify().damping(14)}>
+                  <Icon
+                    name={getIcon(weather.weather[0].id)}
+                    size={14}
+                    className='stroke-gray-600 dark:stroke-stone-300'
+                  />
+                  <Text className='font-barlow-400 text-gray-600 dark:text-stone-300'>
+                    {weather?.temp.day.toFixed(1)}°C
+                  </Text>
+                </Animated.View>
+              )}
+            </Accordion.Expanded>
+          </View>
         </Accordion.Header>
 
         <Accordion.Expanded>

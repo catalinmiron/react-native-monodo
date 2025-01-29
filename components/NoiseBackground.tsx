@@ -13,7 +13,7 @@ export function NoiseBackground() {
       <Image
         source={require("@/assets/todo_bg.png")}
         resizeMode='repeat'
-        className='absolute left-0 top-0 bottom-0 right-0 w-full h-full'
+        className='absolute left-0 top-0 bottom-0 right-0 w-full h-full dark:opacity-20'
       />
     </LinearGradient>
   );

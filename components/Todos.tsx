@@ -49,9 +49,9 @@ export function Todos({ day }: { day: string }) {
   const isDisabled = !content || content === "";
 
   return (
-    <Animated.View className='gap-2'>
+    <Animated.View className='gap-4'>
       <Stagger
-        className='gap-2 mb-4 mt-2 '
+        className='gap-4 mb-4 mt-2 '
         exitDirection={1}
         // enterDirection={-1}
       >
@@ -63,7 +63,7 @@ export function Todos({ day }: { day: string }) {
         entering={FadeInDown.duration(400).delay(150)}
         exiting={FadeOutDown.duration(400).delay(150)}
         layout={LinearTransition.duration(400)}
-        className='gap-2 flex-row mb-4 items-end'>
+        className='gap-2 flex-row mb-4 items-end pl-12 pr-4'>
         <TextInput
           ref={inputRef}
           defaultValue={content}
@@ -77,7 +77,7 @@ export function Todos({ day }: { day: string }) {
           onChangeText={(text) => {
             setContent(text.trim());
           }}
-          className='flex-1 border-b border-black/50 dark:border-white/50 rounded-md p-2 font-barlow-400'
+          className='flex-1 border-b border-black/50 dark:border-white/50 rounded-md p-2 font-barlow-400 dark:text-white/60 placeholder:dark:text-white/30'
           placeholder='What needs to be done?'
         />
         <AnimatedPressable

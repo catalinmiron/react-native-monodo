@@ -29,10 +29,17 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/splash.png",
+          "imageWidth": 1000,
+          "resizeMode": "cover",
+          "backgroundColor": "#ffffff",
+          "enableFullScreenImage_legacy": true,
+          "android": {
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff",
+            "image": "./assets/images/icon.png",
+            "imageWidth": 300
+          }
         }
       ],
       "expo-sqlite",
@@ -41,6 +48,15 @@
         {
           "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location. Only when you are using the app. This is used to display the weather for each day.",
           "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      [
+        "react-native-edge-to-edge",
+        {
+          "android": {
+            "parentTheme": "Light",
+            "enforceNavigationBarContrast": false
+          }
         }
       ]
     ],
