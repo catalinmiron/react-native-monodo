@@ -18,13 +18,13 @@ export const Day = observer(
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
     const dayBg = {
-      1: `bg-gray-400/5 dark:bg-black/5`,
-      2: `bg-gray-400/10 dark:bg-black/10`,
-      3: `bg-gray-400/20 dark:bg-black/20`,
-      4: `bg-gray-400/30 dark:bg-black/30`,
-      5: `bg-gray-400/40 dark:bg-black/40`,
-      6: `bg-gray-400/50 dark:bg-black/50`,
-      0: `bg-gray-400/60 dark:bg-black/60`, // Sunday
+      1: `bg-gray-300/5 dark:bg-black/5`,
+      2: `bg-gray-300/10 dark:bg-black/10`,
+      3: `bg-gray-300/20 dark:bg-black/20`,
+      4: `bg-gray-300/30 dark:bg-black/30`,
+      5: `bg-gray-300/40 dark:bg-black/40`,
+      6: `bg-gray-300/50 dark:bg-black/50`,
+      0: `bg-gray-300/60 dark:bg-black/60`, // Sunday
     };
     return (
       <Accordion.Accordion
