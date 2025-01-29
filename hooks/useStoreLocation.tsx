@@ -25,7 +25,7 @@ async function getCurrentLocation() {
     queryKey: ["weather"],
   });
 
-  weatherQuery$.delete();
+  // weatherQuery$.delete();
   weatherQuery$.get();
 }
 export function useStoreLocation() {
