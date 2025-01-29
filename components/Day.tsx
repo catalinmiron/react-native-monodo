@@ -5,6 +5,8 @@ import {
   weekDays,
 } from "@/utils/constants";
 import { Accordion } from "@animatereactnative/accordion";
+import { currentDay } from "@legendapp/state/helpers/time";
+import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
 import React from "react";
 import { Text, useWindowDimensions } from "react-native";
@@ -12,12 +14,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Todos } from "./Todos";
 
 // day will be formatted as YYYY-MM-DD / check @/utils/constants
-export function Day({ day }: { day: string }) {
+export const Day = observer(({ day }: { day: string }) => {
   const { height } = useWindowDimensions();
   const { top, bottom } = useSafeAreaInsets();
   return (
     <Accordion.Accordion
-      isOpen={dayjs(day).isSame(dayjs(), "day")}
+      isOpen={dayjs(day).isSame(dayjs(currentDay.get()), "day")}
       className='gap-2 pt-4 pr-4 pl-12 border-t-2 border-black/5'
       style={{
         minHeight: (height - top - bottom) / weekDays.length,
@@ -42,4 +44,4 @@ export function Day({ day }: { day: string }) {
       </Accordion.Expanded>
     </Accordion.Accordion>
   );
-}
+});
