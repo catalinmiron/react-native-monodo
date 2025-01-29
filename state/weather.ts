@@ -3,16 +3,23 @@ import { queryClient } from "@/constants/queryClient";
 import { observable, observe } from "@legendapp/state";
 import { currentTime } from "@legendapp/state/helpers/time";
 import { syncedQuery } from "@legendapp/state/sync-plugins/tanstack-query";
-import dayjs from "dayjs";
+import { location$ } from "./location";
 
 export const weatherQuery$ = observable(
   syncedQuery({
     queryClient: queryClient,
     query: {
-      queryKey: ["weather", dayjs(currentTime.get()).format("YYYY-MM-DD")],
+      queryKey: [
+        "weather",
+        currentTime.get().toDateString(),
+        `latitude-${location$.latitude.get()}`,
+        `longitude-${location$.longitude.get()}`,
+      ],
       queryFn: async () => {
         const data = (await fetch(
-          `${API_URL}?units=metric&lat=44.34&lon=10.99&appid=${process.env.EXPO_PUBLIC_OPENWEATHER_API}`
+          `${API_URL}?units=metric&lat=${location$.latitude.get()}&lon=${location$.longitude.get()}&appid=${
+            process.env.EXPO_PUBLIC_OPENWEATHER_API
+          }`
         ).then((x) => x.json())) as ForecastPayload;
 
         return data;
@@ -22,7 +29,13 @@ export const weatherQuery$ = observable(
   })
 );
 
-observe(() => {
+observe(location$.get(), (e) => {
+  // console.log(e.value);
+
+  if (!e.value?.latitude || !e.value?.longitude) {
+    return;
+  }
   // get() the value to start syncing, and it will be reactive to updates coming in
+
   weatherQuery$.get();
 });

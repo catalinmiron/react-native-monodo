@@ -10,7 +10,8 @@ import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
 import React from "react";
-import { Text, useWindowDimensions, View } from "react-native";
+import { Text, useWindowDimensions } from "react-native";
+import Animated, { FadeInRight } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Icon } from "./Icon";
 import { Todos } from "./Todos";
@@ -36,21 +37,23 @@ export const Day = observer(
           <Text className='text-4xl uppercase font-barlow-900'>
             {dayjs(day).format(weekDayFormatter)}
           </Text>
-          <Accordion.Expanded className='flex-row gap-2'>
+          <Accordion.Expanded className='flex-row gap-4'>
             <Text className='font-barlow-400 text-gray-600'>
               {dayjs(day).format(localFormatter)}
             </Text>
             {weather && (
-              <View className='flex-row gap-1 items-center'>
-                <Text className='font-barlow-400 text-gray-600'>
-                  - {weather?.temp.day.toFixed(1)}°C
-                </Text>
+              <Animated.View
+                className='flex-row gap-1 items-center'
+                entering={FadeInRight.springify().damping(14)}>
                 <Icon
                   name={getIcon(weather.weather[0].id)}
                   size={14}
                   className='stroke-gray-600'
                 />
-              </View>
+                <Text className='font-barlow-400 text-gray-600'>
+                  {weather?.temp.day.toFixed(1)}°C
+                </Text>
+              </Animated.View>
             )}
           </Accordion.Expanded>
         </Accordion.Header>
