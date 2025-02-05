@@ -6,18 +6,35 @@ import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
 import React from "react";
-import { Text, useWindowDimensions, View } from "react-native";
-import Animated, { FadeInRight } from "react-native-reanimated";
+import { Text, useWindowDimensions } from "react-native";
+import Animated, {
+  AnimatedRef,
+  FadeInRight,
+  measure,
+  runOnUI,
+  scrollTo,
+  useAnimatedRef,
+} from "react-native-reanimated";
+import { AnimatedScrollView } from "react-native-reanimated/lib/typescript/component/ScrollView";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Icon } from "./Icon";
 import { Todos } from "./Todos";
 
 // day will be formatted as YYYY-MM-DD / check @/utils/constants
 export const Day = observer(
-  ({ day, weather }: { day: string; weather?: DayWeather }) => {
+  ({
+    day,
+    weather,
+    scrollRef,
+  }: {
+    day: string;
+    weather?: DayWeather;
+    scrollRef: AnimatedRef<AnimatedScrollView>;
+  }) => {
     const { height } = useWindowDimensions();
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
+    const aRef = useAnimatedRef();
 
     const dayBg = {
       1: `bg-stone-900/5 dark:bg-black/5`,
@@ -34,6 +51,16 @@ export const Day = observer(
         className={`gap-2 pt-4 pr-4 border-t-2 border-black/5 ${
           dayBg[dayjs(day).weekday() as 0 | 1 | 2 | 3 | 4 | 5 | 6] as string
         }`}
+        onChange={(isOn) => {
+          runOnUI(() => {
+            const measurement = measure(aRef);
+            if (isOn) {
+              scrollTo(scrollRef, 0, measurement!.pageY - height / 2, true);
+            } else {
+              scrollTo(scrollRef, 0, -measurement!.pageY, true);
+            }
+          })();
+        }}
         style={{
           minHeight: (height - top - bottom) / weekDays.length,
           // backgroundColor: weekDayColors[dayjs(day).weekday()],
@@ -42,7 +69,7 @@ export const Day = observer(
           // }, rgba(0,0,0,0.1))`,
         }}>
         <Accordion.Header>
-          <View className='pl-12'>
+          <Animated.View className='pl-12' ref={aRef}>
             <Text className='text-4xl uppercase font-barlow-900 dark:text-white opacity-90'>
               {dayjs(day).format(weekDayFormatter)}
             </Text>
@@ -68,7 +95,7 @@ export const Day = observer(
                 </Animated.View>
               )}
             </Accordion.Expanded>
-          </View>
+          </Animated.View>
         </Accordion.Header>
 
         <Accordion.Expanded>
