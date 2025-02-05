@@ -26,12 +26,12 @@
         </tr>
         <tr>
             <td><picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://gist.github.com/user-attachments/assets/0262492a-c632-4b10-8009-dd260d853463">
-      <img alt="AnimateReactNative.com - Premium and Custom React Native animations." src="https://gist.github.com/user-attachments/assets/7cc94238-1235-4e75-bf58-78cb7c22d996" width="100%">
+      <source media="(prefers-color-scheme: dark)" srcset="./screenshots/dark.png">
+      <img src="./screenshots/light.png" width="100%">
     </picture></td>
             <td><picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://gist.github.com/user-attachments/assets/79d6bdd3-a1fb-42c9-9f5e-ec7954fe82a1">
-      <img alt="AnimateReactNative.com - Premium and Custom React Native animations." src="https://gist.github.com/user-attachments/assets/288544a3-8718-4cfc-9884-900e0b749614" width="100%">
+      <source media="(prefers-color-scheme: dark)" srcset="./screenshots/dark_expanded.png">
+      <img src="./screenshots/light_expanded.png" width="100%">
     </picture>
     </td>
         </tr>
