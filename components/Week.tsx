@@ -2,7 +2,8 @@ import { DayWeather } from "@/constants/openweather";
 import { useStoreLocation } from "@/hooks/useStoreLocation";
 import { location$ } from "@/state/location";
 import { weatherQuery$ } from "@/state/weather";
-import { weekDays } from "@/utils/constants";
+import { getWeekDays } from "@/utils/constants";
+import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
 import React, { useMemo } from "react";
@@ -31,6 +32,8 @@ export const Week = observer(() => {
   // To handle gestures, check https://github.com/kirillzyusko/react-native-keyboard-controller/blob/main/example/src/screens/Examples/InteractiveKeyboard/index.tsx#L90
   const { bottom } = useSafeAreaInsets();
   const ref = useAnimatedRef<ScrollView>();
+  const _currentDay = currentDay.get();
+  const weekDays = useMemo(() => getWeekDays(), [_currentDay]);
 
   return (
     <KeyboardAwareScrollView

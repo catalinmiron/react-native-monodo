@@ -9,9 +9,12 @@ export const globalFormatter = `YYYY-MM-DD`;
 export const localFormatter = `MMMM, DD YYYY`;
 export const weekDayFormatter = `dddd`;
 
-export const weekDays = [...Array(7).keys()].map((key) => {
-  return dayjs().startOf("isoWeek").add(key, "day").format(globalFormatter);
-});
+export const getWeekDays = () =>
+  [...Array(7).keys()].map((key) => {
+    return dayjs().startOf("isoWeek").add(key, "day").format(globalFormatter);
+  });
+
+export type WeekDayIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 const _opacity = 0.4;
 export const weekDayColors = {

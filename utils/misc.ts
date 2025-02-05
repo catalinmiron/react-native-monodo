@@ -6,3 +6,7 @@ export const hitSlop: Insets = {
   bottom: 10,
   left: 10,
 };
+
+export async function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

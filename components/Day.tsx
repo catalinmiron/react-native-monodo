@@ -1,7 +1,11 @@
 import { DayWeather, getIcon } from "@/constants/openweather";
 import { location$ } from "@/state/location";
-import { localFormatter, weekDayFormatter, weekDays } from "@/utils/constants";
-import { Accordion } from "@animatereactnative/accordion";
+import {
+  localFormatter,
+  weekDayFormatter,
+  WeekDayIndex,
+} from "@/utils/constants";
+import Accordion from "@animatereactnative/accordion";
 import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
@@ -9,6 +13,7 @@ import React from "react";
 import { Text, useWindowDimensions } from "react-native";
 import Animated, {
   AnimatedRef,
+  FadeInDown,
   FadeInRight,
   measure,
   runOnUI,
@@ -35,6 +40,7 @@ export const Day = observer(
     const { top, bottom } = useSafeAreaInsets();
     const isCurrentDay = dayjs(day).isSame(dayjs(currentDay.get()), "day");
     const aRef = useAnimatedRef();
+    const currentDayIndex = dayjs(day).isoWeekday() as WeekDayIndex;
 
     const dayBg = {
       1: `bg-stone-900/5 dark:bg-black/5`,
@@ -43,13 +49,14 @@ export const Day = observer(
       4: `bg-stone-900/20 dark:bg-black/20`,
       5: `bg-stone-900/25 dark:bg-black/25`,
       6: `bg-stone-900/30 dark:bg-black/30`,
-      0: `bg-stone-900/35 dark:bg-black/45`, // Sunday
-    };
+      7: `bg-stone-900/35 dark:bg-black/45`, // Sunday
+    } as const;
     return (
       <Accordion.Accordion
+        entering={FadeInDown.springify().delay(currentDayIndex * 50)}
         isOpen={isCurrentDay}
         className={`gap-2 pt-4 pr-4 border-t-2 border-black/5 ${
-          dayBg[dayjs(day).weekday() as 0 | 1 | 2 | 3 | 4 | 5 | 6] as string
+          dayBg[currentDayIndex] as string
         }`}
         onChange={(isOn) => {
           runOnUI(() => {
@@ -62,7 +69,7 @@ export const Day = observer(
           })();
         }}
         style={{
-          minHeight: (height - top - bottom) / weekDays.length,
+          minHeight: (height - top - bottom) / 7,
           // backgroundColor: weekDayColors[dayjs(day).weekday()],
           // experimental_backgroundImage: `linear-gradient(to bottom, ${
           //   weekDayColors[dayjs(day).weekday()]
