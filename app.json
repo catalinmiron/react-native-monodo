@@ -10,7 +10,12 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.animatereactnative.monodo"
+      "bundleIdentifier": "com.animatereactnative.monodo",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.animatereactnative.monodo"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -10,14 +10,13 @@ const dbPath =
   Platform.OS === "ios"
     ? Object.values(Paths.appleSharedContainers)?.[0]?.uri
     : defaultDatabaseDirectory;
-
 export const sqliteDb = (shouldCloseConnection?: boolean) => {
   const db = openDatabaseSync(
     "db.db",
     {
       enableChangeListener: true,
-    }
-    // dbPath
+    },
+    dbPath
   );
 
   if (shouldCloseConnection) {
@@ -28,8 +27,8 @@ export const sqliteDb = (shouldCloseConnection?: boolean) => {
         "db.db",
         {
           enableChangeListener: true,
-        }
-        // dbPath
+        },
+        dbPath
       );
     }
   }
