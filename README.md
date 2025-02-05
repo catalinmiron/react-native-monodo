@@ -1,8 +1,46 @@
-# Welcome to your Expo app 👋
+<p align="center">
+  <a href="https://www.animatereactnative.com">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://www.animatereactnative.com/animatereactnative_dark.svg">
+      <img alt="AnimateReactNative.com - Premium and Custom React Native animations." src="https://www.animatereactnative.com/animatereactnative_logo.svg" width="50%">
+    </picture>
+  </a>
+</p>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
+
+---
+
+<br/><br/>
+
+# MonoDo 👋
+
+<table>
+    <caption>
+        <small>Switch the theme (Easter egg 🥚)</small>
+    </caption>
+    <thead>
+        <tr>
+            <th>Closed</th>
+            <th>Opened</th>
+        </tr>
+        <tr>
+            <td><picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://gist.github.com/user-attachments/assets/0262492a-c632-4b10-8009-dd260d853463">
+      <img alt="AnimateReactNative.com - Premium and Custom React Native animations." src="https://gist.github.com/user-attachments/assets/7cc94238-1235-4e75-bf58-78cb7c22d996" width="100%">
+    </picture></td>
+            <td><picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://gist.github.com/user-attachments/assets/79d6bdd3-a1fb-42c9-9f5e-ec7954fe82a1">
+      <img alt="AnimateReactNative.com - Premium and Custom React Native animations." src="https://gist.github.com/user-attachments/assets/288544a3-8718-4cfc-9884-900e0b749614" width="100%">
+    </picture>
+    </td>
+        </tr>
+    </thead>
+</table>
 
 ## Get started
+
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 1. Install dependencies
 
@@ -48,3 +86,8 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+### Inspiration
+
+> [!TIP]
+> This project was 100% inspired by [Brett](https://x.com/thebtjackson/status/1881325871304421532). Thank you!
