@@ -69,7 +69,9 @@ export const Week = observer(() => {
       <View
         className='absolute left-0 right-0 top-0 z-10'
         pointerEvents='none'
-        style={{ height: Platform.OS === "android" ? topSpacing * 1.5 : top }}>
+        style={{
+          height: Platform.OS === "android" ? topSpacing * 1.5 : top * 1.5,
+        }}>
         <MaskedView
           androidRenderingMode='software'
           maskElement={
