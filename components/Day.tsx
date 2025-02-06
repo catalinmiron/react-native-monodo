@@ -53,7 +53,7 @@ export const Day = observer(
     } as const;
     return (
       <Accordion.Accordion
-        entering={FadeInDown.springify().delay(currentDayIndex * 50)}
+        entering={FadeInDown.springify().delay(200 + currentDayIndex * 50)}
         isOpen={isCurrentDay}
         className={`gap-2 pt-4 pr-4 border-t-2 border-black/5 ${
           dayBg[currentDayIndex] as string

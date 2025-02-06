@@ -39,7 +39,8 @@ export function useStoreLocation() {
       "change",
       (appState) => {
         if (appState === "active") {
-          getCurrentLocation();
+          console.log("AppState?");
+          // getCurrentLocation();
         }
       }
     );

@@ -27,3 +27,7 @@ export const weekDayColors = {
   6: `rgba(152, 152, 152, ${_opacity})`,
   7: `rgba(132, 132, 132, ${_opacity})`,
 };
+
+import colors from "tailwindcss/colors";
+
+export const twColors = colors;
