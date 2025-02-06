@@ -13,6 +13,7 @@
       "bundleIdentifier": "com.animatereactnative.monodo",
       "entitlements": {
         "com.apple.security.application-groups": [
+          "group.com.animatereactnative.monodo",
           "group.com.animatereactnative.monodo"
         ]
       }
@@ -22,7 +23,17 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.animatereactnative.monodo"
+      "package": "com.animatereactnative.monodo",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -67,6 +78,21 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "5b5466b2-9d6f-43dd-ac13-0ae1a08050cb"
+      }
+    },
+    "owner": "catalinmiron",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5b5466b2-9d6f-43dd-ac13-0ae1a08050cb"
     }
   }
 }

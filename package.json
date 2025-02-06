@@ -46,6 +46,7 @@
     "expo-status-bar": "~2.0.1",
     "expo-symbols": "~0.2.2",
     "expo-system-ui": "~4.0.7",
+    "expo-updates": "~0.26.16",
     "expo-web-browser": "~14.0.2",
     "lucide-react-native": "^0.473.0",
     "moti": "^0.29.0",

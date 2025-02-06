@@ -26,6 +26,7 @@ import { useLocalMigrations } from "@/hooks/useLocalMigrations";
 SplashScreen.preventAutoHideAsync();
 
 import { queryClient } from "@/constants/queryClient";
+import { useExpoUpdates } from "@/hooks/useExpoUpdates";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -40,6 +41,9 @@ export default function RootLayout() {
   });
 
   useLocalMigrations();
+  if (!__DEV__) {
+    useExpoUpdates();
+  }
 
   useEffect(() => {
     if (loaded) {
