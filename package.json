@@ -64,7 +64,8 @@
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vexo-analytics": "^1.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -30,6 +30,10 @@ import { useExpoUpdates } from "@/hooks/useExpoUpdates";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
+
+import { vexo } from "vexo-analytics";
+vexo(process.env.EXPO_PUBLIC_VEXO_ANALYTICS as string);
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
