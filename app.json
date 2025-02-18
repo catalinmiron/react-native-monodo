@@ -15,6 +15,7 @@
         "usesNonExemptEncryption": false
       },
       "entitlements": {
+        "aps-environment": "development",
         "com.apple.security.application-groups": [
           "group.com.animatereactnative.monodo"
         ]
@@ -31,6 +32,12 @@
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.FOREGROUND_SERVICE_LOCATION"
+      ],
+      "blockedPermissions": [
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO"
       ]
     },
     "web": {

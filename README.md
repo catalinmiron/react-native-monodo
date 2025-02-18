@@ -15,6 +15,10 @@
 
 # MonoDo 👋
 
+TestFlight: https://testflight.apple.com/join/A5G6jwVv
+
+Android: TBD
+
 <table>
     <caption>
         <small>Switch the theme (Easter egg 🥚)</small>
