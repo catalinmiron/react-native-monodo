@@ -11,6 +11,9 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.animatereactnative.monodo",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
       "entitlements": {
         "com.apple.security.application-groups": [
           "group.com.animatereactnative.monodo"
