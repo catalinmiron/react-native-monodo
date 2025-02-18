@@ -21,6 +21,7 @@ import "../global.css";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useLocalMigrations } from "@/hooks/useLocalMigrations";
+import { vexo } from "vexo-analytics";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -34,6 +35,7 @@ import { useExpoUpdates } from "@/hooks/useExpoUpdates";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
+vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY as string);
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

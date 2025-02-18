@@ -13,7 +13,6 @@
       "bundleIdentifier": "com.animatereactnative.monodo",
       "entitlements": {
         "com.apple.security.application-groups": [
-          "group.com.animatereactnative.monodo",
           "group.com.animatereactnative.monodo"
         ]
       }
