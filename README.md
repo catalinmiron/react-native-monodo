@@ -17,7 +17,7 @@
 
 TestFlight: https://testflight.apple.com/join/A5G6jwVv
 
-Android: TBD
+Android: https://play.google.com/store/apps/details?id=com.animatereactnative.monodo
 
 <table>
     <caption>
