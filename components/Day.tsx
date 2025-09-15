@@ -9,7 +9,6 @@ import Accordion from "@animatereactnative/accordion";
 import { currentDay } from "@legendapp/state/helpers/time";
 import { observer } from "@legendapp/state/react";
 import dayjs from "dayjs";
-import React from "react";
 import { Text, useWindowDimensions } from "react-native";
 import Animated, {
   AnimatedRef,
@@ -90,7 +89,7 @@ export const Day = observer(
                     location$.get().latitude
                   }-longitude-${location$.get().longitude}`}
                   className='flex-row gap-1 items-center'
-                  entering={FadeInRight.springify().damping(14)}>
+                  entering={FadeInRight.springify()}>
                   <Icon
                     name={getIcon(weather.weather[0].id)}
                     size={14}

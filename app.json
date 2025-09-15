@@ -87,7 +87,9 @@
           "project": "monodo",
           "organization": "animatereactnative"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

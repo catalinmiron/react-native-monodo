@@ -40,7 +40,7 @@ export function Todo({ todo }: { todo: typeof todos.$inferSelect }) {
           .execute();
       }}>
       <View className='flex-row gap-2 items-center pl-12'>
-        <View
+        <Animated.View
           className={`w-4 h-4 border rounded-sm items-center justify-center  ${
             Boolean(todo.done)
               ? "bg-selected border-selected"
@@ -53,7 +53,7 @@ export function Todo({ todo }: { todo: typeof todos.$inferSelect }) {
               <Check size={10} absoluteStrokeWidth className='stroke-white' />
             </Animated.View>
           )}
-        </View>
+        </Animated.View>
         <Text
           className={`font-barlow-400 dark:text-stone-300 flex-shrink ${
             Boolean(todo.done) ? "line-through decoration-selected" : ""
